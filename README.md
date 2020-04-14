@@ -2,6 +2,6 @@
 
 ## Features
 
-* support yml file to configure
+* support JSON, TOML, YAML config file
 * support send html as mail body
 * support mail attachment

@@ -1,4 +1,4 @@
-package mailcore
+package core
 
 import (
 	"bytes"

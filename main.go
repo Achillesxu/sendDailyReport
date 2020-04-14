@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"github.com/spf13/viper"
 	"os"
+	"time"
 )
 
 // exitCode wraps a return value for the application
@@ -25,6 +26,12 @@ func main() {
 		panic(exitCode{1})
 	}
 
-	fmt.Println(viper.GetString("smtp_config.host"))
+	fmt.Println(viper.GetString("smtp_conf.host"))
+
+	//err = core.Mail()
+	//if err != nil {
+	//	fmt.Println(err)
+	//}
+	fmt.Println(time.Now().Format("2006-01-02"))
 
 }
