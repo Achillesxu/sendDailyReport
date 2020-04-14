@@ -5,16 +5,21 @@ import (
 	"github.com/go-yaml/yaml"
 )
 
-// YAMLData is our common data struct
-// with YAML struct tags
-type YAMLData struct {
-	Name string `yaml:"name"`
-	Age  int    `yaml:"age"`
+type SmtpConf struct {
+	Host     string `yaml:"host"`
+	Port     int    `yaml:"port"`
+	User     string `yaml:"user"`
+	Password string `yaml:"password"`
 }
 
-// ToYAML dumps the YAMLData struct to
+// ConfigData is our common data struct
+type ConfigData struct {
+	Smtp SmtpConf `yaml:"smtp_config"`
+}
+
+// ToYAML dumps the ConfigData struct to
 // a YAML format bytes.Buffer
-func (t *YAMLData) ToYAML() (*bytes.Buffer, error) {
+func (t *ConfigData) ToYAML() (*bytes.Buffer, error) {
 	d, err := yaml.Marshal(t)
 	if err != nil {
 		return nil, err
@@ -26,6 +31,6 @@ func (t *YAMLData) ToYAML() (*bytes.Buffer, error) {
 }
 
 // Decode will decode into TOMLData
-func (t *YAMLData) Decode(data []byte) error {
+func (t *ConfigData) Decode(data []byte) error {
 	return yaml.Unmarshal(data, t)
 }
